@@ -1,6 +1,6 @@
 {
   "name": "YakStack",
-  "start_url": ".",
+  "start_url": "http://sarahpan.me/YakStack",
   "description": "A decentralized Yik Yak",
   "icons": [{
     "src": "https://cdn.worldvectorlogo.com/logos/yik-yak-icon.svg",
