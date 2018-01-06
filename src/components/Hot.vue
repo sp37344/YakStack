@@ -8,7 +8,6 @@
         <span class="sign-out" style="font-family: Quicksand; color: #696969">
           {{ user.username ? user.username : user.identityAddress }}
         </span>
-
         <div class="col-md-8 col-md-offset-2">
           <h1>YakStak</h1>
           <b-navbar class="nav navbar-nav">

@@ -6,7 +6,6 @@
 </template>
 
 <script>
-
 import firebase from 'firebase'
 var config = {
   apiKey: 'AIzaSyBG_iZYxJ6s-N0wqkdQ78sLys9SnU42oIc',

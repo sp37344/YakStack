@@ -1,14 +1,12 @@
 
 <template id="yaks-template">
   <li class="list-group-item">
-    <label style="color: #696969">{{ yak.post }}</label>
-    <i class="glyphicon glyphicon-chevron-up" style="color: green" @click="upvote"></i>
-    <span class="label label-primary">{{ yak.votes }}</span>
-    <i class="glyphicon glyphicon-chevron-down" style="color: red" @click="downvote"></i>
+    <label class="yakstyle">{{ yak.post }}</label>
+    <!-- <i class="glyphicon glyphicon-chevron-up" style="color: green" @click="upvote"></i>
+    <span class="label">{{ yak.votes }}</span>
+    <i class="glyphicon glyphicon-chevron-down" style="color: red" @click="downvote"></i> -->
   </li>
 </template>
-
-<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
 <script type="Javascript">
 import Dashboard from './Dashboard.vue'
@@ -58,22 +56,35 @@ export default {
 
 <style lang="scss" scoped>
 
-a {
-  text-decoration: none;
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+
+ul>li {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border: none;
+  border-top:1px solid #696969;
+  background-color: transparent;
 }
 
-label {
+ul>li:first-child{
+    border-top:0 none;
+}
+
+span {
+  text-align: right;
+  color: 'white';
+}
+
+.yakstyle {
+  color: white; 
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: lighter;
   margin-bottom: 0;
   width: 85%;
   cursor: pointer;
 }
 
-span {
-  text-align: right;
-  color: #696969;
-}
-
-.glyphicon {
+/*.glyphicon {
   opacity: 1;
   transition: opacity .25s ease-in-out;
   -moz-transition: opacity .25s ease-in-out;
@@ -88,14 +99,6 @@ span {
 
 .glyphicon:active {
   opacity: 0.25;
-}
-
-/*.glyphicon-chevron-up:visited {
-  color: green;
-}
-
-.glyphicon-chevron-down:visited {
-  color: red;
 }*/
 
 </style>

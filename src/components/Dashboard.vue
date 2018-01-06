@@ -1,19 +1,23 @@
 <template>
   <div class="hello">
-    <div class="container">
+    <div class="container" style="padding: 20px">
       <div class="row">
+        <span class="sign-out">
+            <a href="#" @click.prevent="signOut" style="font-family: Quicksand">Sign Out</a>
+        </span>
+        <span class="sign-out" style="font-family: Quicksand; color: #696969">
+          {{ user.username ? user.username : user.identityAddress }}
+        </span>
         <div class="col-md-8 col-md-offset-2">
-          <h1>YakStak
-            <small><span class="sign-out">(<a href="#" @click.prevent="signOut" style="font-family: Quicksand">Sign Out</a>)</span></small>
-          </h1>
-          <h2 class="user-info">
-            <small>User Profile: 
-            {{ user.username ? user.username : user.identityAddress }}
-            <p>
-              <router-link to="hot">see trending yaks</router-link>
-            </p>
-            </small>
-          </h2>
+          <h1>YakStak</h1>
+          <b-navbar class="nav navbar-nav">
+            <b-dropdown-item><router-link to="hot">trending yaks</router-link></b-dropdown-item>
+            <b-dropdown-item disabled> | </b-dropdown-item>
+            <b-dropdown-item disabled>your profile</b-dropdown-item>
+          </b-navbar> 
+          <form @submit.prevent="addYak(yaktxt)" :disabled="! yaktxt" style="padding-top: 50px; padding-bottom: 30px">
+            <input v-model="yaktxt" type="text" class="form-control" placeholder="Write a yak (press enter to submit)" autofocus>
+          </form>
           <ul class="list-group">
             <yaks v-for="yak in myyakdata" :yak="yak"></yaks>
           </ul>
@@ -63,6 +67,15 @@ export default {
     this.fetchData()
   },
   methods: {
+    addYak (yaktxt) {
+      this.myyakdata.unshift({
+        post: yaktxt,
+        votes: 0,
+        upvoted: false,
+        downvoted: false
+      })
+      this.yaktxt = ''
+    },
     fetchData () {
       const blockstack = this.blockstack
       let options = {
@@ -75,7 +88,6 @@ export default {
         this.myyakdata = parsedYaks
       })
     },
-
     signOut () {
       // this.blockstack.signUserOut(window.location.href)
       this.blockstack.signUserOut('http://localhost:8080/#/signin')
@@ -88,74 +100,41 @@ export default {
 <style lang="scss" scoped>
 
 @import url('https://fonts.googleapis.com/css?family=Megrim');
-@import url('https://fonts.googleapis.com/css?family=Kaushan+Script');
-@import url('https://fonts.googleapis.com/css?family=Oxygen');
-@import url('https://fonts.googleapis.com/css?family=Cabin');
 @import url('https://fonts.googleapis.com/css?family=Quicksand');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
 
 h1 {
     color: #40e0d0;
     font-size: 3em;
     font-family: 'Megrim', sans-serif;
-}
-
-h2 {
-    color: #f7f7f7;
-    font-size: 3em;
-    font-family: 'Quicksand', sans-serif;
-}
-
-h3 {
-    color: white;
-}
-
-button {
-  background-color: #40e0d0;
-  border: none;
-
-  &:hover {
-    background-color: lighten(#40e0d0, 15%);
-  }
-
-  &:active {
-    background-color: lighten(#40e0d0, 20%);
-  }
+    text-align: center;
+    padding-top: 5px;
 }
 
 input::placeholder {
     color: #696969;
-    font-family: 'Cabin', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     font-weight: lighter;
 }
 
 input {
   color: #696969;
-  font-family: 'Cabin', sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
   font-weight: lighter;
+  border-radius: 50px;
+  width: 100%;
 }
 
-
-.list-group-item {
-  &.completed label {
-    text-decoration: line-through;
-  }
-
-  .delete {
-    display: none;
-  }
-
-  &:hover .delete {
-    display: inline;
-    color: grey;
-    &:hover {
-      text-decoration: none;
-      color: red;
-    }
-  }
+b-dropdown-item {
+  font-family: 'Quicksand', sans-serif;
+  color: #696969;
+  font-size: 1em;
+  padding: 1%;
 }
 
-a {
-  padding-left: 5px;
+.navbar-nav {
+  width: 100%;
+  text-align: center;
 }
 
 </style>

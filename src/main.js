@@ -6,7 +6,9 @@ import Router from 'vue-router'
 import Hot from './components/Hot'
 import Dashboard from './components/Dashboard'
 import Landing from './components/Landing'
+import BootstrapVue from 'bootstrap-vue'
 
+Vue.use(BootstrapVue)
 Vue.use(Router)
 
 const routes = [

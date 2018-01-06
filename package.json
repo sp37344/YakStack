@@ -8,16 +8,20 @@
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",
     "build": "node build/build.js",
-    "lint": "eslint --ext .js,.vue src"
+    "lint": "eslint --ext .js,.vue src",
+    "deploy": "node ./node_modules/vue-gh-pages/index.js"
   },
   "dependencies": {
     "axios": "^0.16.1",
     "blockstack": "0.14.2",
+    "bootstrap": "^4.0.0-beta.2",
     "bootstrap-sass": "^3.3.7",
+    "bootstrap-vue": "^1.4.0",
     "firebase": "^4.8.1",
     "node-sass": "^4.5.3",
     "sass-loader": "^6.0.5",
     "vue": "^2.3.3",
+    "vue-gh-pages": "^1.7.3",
     "vue-router": "^2.8.1"
   },
   "devDependencies": {
@@ -82,5 +86,5 @@
   "bugs": {
     "url": "https://github.com/sp37344/YakStack/issues"
   },
-  "homepage": "https://github.com/sp37344/YakStack#readme"
+  "homepage": "https://github.com/sp37344/YakStack"
 }
