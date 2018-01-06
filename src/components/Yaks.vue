@@ -2,9 +2,9 @@
 <template id="yaks-template">
   <li class="list-group-item">
     <label class="yakstyle">{{ yak.post }}</label>
-    <!-- <i class="glyphicon glyphicon-chevron-up" style="color: green" @click="upvote"></i>
+    <i class="glyphicon glyphicon-chevron-up" style="color: green" @click="upvote"></i>
     <span class="label">{{ yak.votes }}</span>
-    <i class="glyphicon glyphicon-chevron-down" style="color: red" @click="downvote"></i> -->
+    <i class="glyphicon glyphicon-chevron-down" style="color: red" @click="downvote"></i>
   </li>
 </template>
 
