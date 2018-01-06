@@ -1,28 +1,22 @@
 <template>
   <div class="hello">
-    <div class="container">
+    <div class="container" style="padding: 20px">
       <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-          <h1>YakStak
-            <small><span class="sign-out">(<a href="#" @click.prevent="signOut" style="font-family: Quicksand">Sign Out</a>)</span></small>
-          </h1>
-          <h2 class="user-info">
-            <small>Recent Yaks 
-            <p>
-              <router-link to="self">see your profile</router-link>
-            </p>
-            </small>
-          </h2>
-          <form @submit.prevent="addYak(yaktxt)" :disabled="! yaktxt">
-            <div class="input-group">
-              <input v-model="yaktxt" type="text" class="form-control" placeholder="Write a yak..." autofocus>
-              <span class="input-group-btn">
-                <button class="btn btn-default" type="submit" :disabled="! yaktxt">Yak</button>
-              </span>
-            </div>
-          </form>
+        <span class="sign-out">
+            <a href="#" @click.prevent="signOut" style="font-family: Quicksand">Sign Out</a>
+        </span>
+        <span class="sign-out" style="font-family: Quicksand; color: #696969">
+          {{ user.username ? user.username : user.identityAddress }}
+        </span>
 
-          <ul class="list-group">
+        <div class="col-md-8 col-md-offset-2">
+          <h1>YakStak</h1>
+          <b-navbar class="nav navbar-nav">
+            <b-dropdown-item disabled>trending yaks</b-dropdown-item>
+            <b-dropdown-item disabled> | </b-dropdown-item>
+            <b-dropdown-item><router-link to="self">your profile</router-link></b-dropdown-item>
+          </b-navbar>                  
+          <ul class="list-group" style="padding-top: 50px">
             <yaks v-for="yak in yakdata" :yak="yak"></yaks>
           </ul>
         </div>
@@ -139,74 +133,27 @@ export default {
 <style lang="scss" scoped>
 
 @import url('https://fonts.googleapis.com/css?family=Megrim');
-@import url('https://fonts.googleapis.com/css?family=Kaushan+Script');
-@import url('https://fonts.googleapis.com/css?family=Oxygen');
-@import url('https://fonts.googleapis.com/css?family=Cabin');
 @import url('https://fonts.googleapis.com/css?family=Quicksand');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
 
 h1 {
     color: #40e0d0;
     font-size: 3em;
     font-family: 'Megrim', sans-serif;
+    text-align: center;
+    padding-top: 5px;
 }
 
-h2 {
-    color: #f7f7f7;
-    font-size: 3em;
-    font-family: 'Quicksand', sans-serif;
-}
-
-h3 {
-    color: white;
-}
-
-button {
-  background-color: #40e0d0;
-  border: none;
-
-  &:hover {
-    background-color: lighten(#40e0d0, 15%);
-  }
-
-  &:active {
-    background-color: lighten(#40e0d0, 20%);
-  }
-}
-
-input::placeholder {
-    color: #696969;
-    font-family: 'Cabin', sans-serif;
-    font-weight: lighter;
-}
-
-input {
+b-dropdown-item {
+  font-family: 'Quicksand', sans-serif;
   color: #696969;
-  font-family: 'Cabin', sans-serif;
-  font-weight: lighter;
+  font-size: 1em;
+  padding: 1%;
 }
 
-
-.list-group-item {
-  &.completed label {
-    text-decoration: line-through;
-  }
-
-  .delete {
-    display: none;
-  }
-
-  &:hover .delete {
-    display: inline;
-    color: grey;
-    &:hover {
-      text-decoration: none;
-      color: red;
-    }
-  }
-}
-
-a {
-  padding-left: 5px;
+.navbar-nav {
+  width: 100%;
+  text-align: center;
 }
 
 </style>
